@@ -1,24 +1,24 @@
 resource "aws_s3_bucket" "assets" {
-  bucket = "checkout-test-website-assets"
-  acl = "private"
+  bucket        = "checkout-test-website-assets"
+  acl           = "private"
   force_destroy = true
 }
 
 resource "aws_s3_bucket_policy" "cloudfront_access_policy" {
   bucket = aws_s3_bucket.assets.id
   policy = jsonencode({
-    "Version": "2008-10-17",
-    "Id": "PolicyForCloudFrontPrivateContent",
-    "Statement": [
-        {
-            "Sid": "1",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${aws_cloudfront_origin_access_identity.cdn.id}"
-            },
-            "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::${aws_s3_bucket.assets.bucket}/*"
-        }
+    "Version" : "2008-10-17",
+    "Id" : "PolicyForCloudFrontPrivateContent",
+    "Statement" : [
+      {
+        "Sid" : "1",
+        "Effect" : "Allow",
+        "Principal" : {
+          "AWS" : "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${aws_cloudfront_origin_access_identity.cdn.id}"
+        },
+        "Action" : "s3:GetObject",
+        "Resource" : "arn:aws:s3:::${aws_s3_bucket.assets.bucket}/*"
+      }
     ]
   })
 }
@@ -29,8 +29,8 @@ resource "aws_route53_record" "cdn_domain" {
   zone_id = var.cdn_cert.zone_id
 
   alias {
-    name = aws_cloudfront_distribution.s3_distribution.domain_name
-    zone_id = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
+    name                   = aws_cloudfront_distribution.s3_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
     evaluate_target_health = false
   }
 }
@@ -54,8 +54,8 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   enabled = true
 
   default_cache_behavior {
-    allowed_methods = ["GET", "HEAD", "OPTIONS"]
-    cached_methods = ["GET", "HEAD"]
+    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
+    cached_methods   = ["GET", "HEAD"]
     target_origin_id = local.s3_origin_id
 
     forwarded_values {
@@ -79,7 +79,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   viewer_certificate {
     acm_certificate_arn = var.cdn_cert.certificate_arn
-    ssl_support_method = "sni-only"
+    ssl_support_method  = "sni-only"
   }
 }
 

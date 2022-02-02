@@ -4,8 +4,8 @@ resource "aws_lambda_function" "app" {
   function_name = var.app_name
   role          = aws_iam_role.iam_for_lambda.arn
   image_uri     = "${var.docker_image_repo_url}:${var.app_version}"
-  package_type = "Image"
-  publish = true
+  package_type  = "Image"
+  publish       = true
 
   depends_on = [
     aws_cloudwatch_log_group.app,
@@ -15,7 +15,7 @@ resource "aws_lambda_function" "app" {
   environment {
     variables = {
       APP_VERSION = var.app_version
-      CDN_URL = "//${var.cdn_domain}/${var.app_version}${var.cdn_path}"
+      CDN_URL     = "//${var.cdn_domain}/${var.app_version}${var.cdn_path}"
     }
   }
 }
