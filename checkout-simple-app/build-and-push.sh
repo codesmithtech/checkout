@@ -14,7 +14,7 @@ fi
 ACCOUNT_ID=246316657840
 AWS_PROFILE=hhd
 AWS_REGION=eu-west-1
-REPO_URL=$ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/checkout-test-website
+REPO_URL=$ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/checkout-test
 ASSETS_BUCKET=checkout-test-website-assets
 
 # Build and push the docker image
