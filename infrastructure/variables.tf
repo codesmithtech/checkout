@@ -9,10 +9,10 @@ variable "aws_profile" {
   default     = "default"
 }
 
-variable "docker_image_repo_url" {
+variable "ecr_repo_name" {
   type        = string
-  description = "URL of the docker image repository for this app. Must be a private ECR repository. DO NOT INCLUDE the image tag here. (use app_version)"
-  default     = "246316657840.dkr.ecr.eu-west-1.amazonaws.com/checkout-test-website"
+  description = "Name of the ECR repository for this app. Must be a private ECR repository."
+  default     = "checkout-test-website"
 }
 
 variable "app_domain" {

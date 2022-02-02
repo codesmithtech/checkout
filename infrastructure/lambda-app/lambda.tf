@@ -3,7 +3,7 @@ resource "aws_lambda_function" "app" {
 
   function_name = var.app_name
   role          = aws_iam_role.iam_for_lambda.arn
-  image_uri     = "${var.docker_image_repo_url}:${var.app_version}"
+  image_uri     = "${data.aws_caller_identity.current.account_id}.dkr.ecr.eu-west-1.amazonaws.com/${var.ecr_repo_name}:${var.app_version}"
   package_type  = "Image"
   publish       = true
 

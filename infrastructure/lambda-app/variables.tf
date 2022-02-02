@@ -8,16 +8,14 @@ variable "app_name" {
   description = "System name that can be used to identify this app"
 }
 
-variable "docker_image_repo_url" {
+variable "ecr_repo_name" {
   type        = string
-  description = "URL of the docker image repository for this app. DO NOT INCLUDE the image tag here. (use app_version)"
-  default     = "246316657840.dkr.ecr.eu-west-1.amazonaws.com/checkout-test-website"
+  description = "Name of the ECR repository for this app. Must be a private ECR repository."
 }
 
 variable "app_domain" {
   type        = string
   description = "Domain on which the app will be publicly available"
-  default     = "checkout.davidsmith.dev"
 }
 
 variable "app_path" {
@@ -29,7 +27,6 @@ variable "app_path" {
 variable "cdn_domain" {
   type        = string
   description = "Domain on which static assets will be published to"
-  default     = "checkout-cdn.davidsmith.dev"
 }
 
 variable "cdn_path" {

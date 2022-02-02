@@ -74,7 +74,7 @@ module "lambda_app" {
   cdn_domain             = var.cdn_domain
   app_cert               = module.app_cert
   cdn_cert               = module.cdn_cert
-  docker_image_repo_url  = var.docker_image_repo_url
+  ecr_repo_name          = var.ecr_repo_name
 
   vpc = {
     private_subnets = local.vpc.private_subnets
