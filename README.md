@@ -32,7 +32,7 @@ Sensible default have been provided for most variables. The settings that it is 
 * `aws_profile`
 * `app_domain`
 * `cdn_domain`
-* `docker_image_repo_url`
+* `ecr_repo_name`
 
 Read the [Terraform documentation](https://www.terraform.io/language/values/variables#variable-definitions-tfvars-files) around setting variables.
 
