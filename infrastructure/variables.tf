@@ -12,7 +12,7 @@ variable "aws_profile" {
 variable "ecr_repo_name" {
   type        = string
   description = "Name of the ECR repository for this app. Must be a private ECR repository."
-  default     = "checkout-test-website"
+  default     = "checkout-test"
 }
 
 variable "app_domain" {
