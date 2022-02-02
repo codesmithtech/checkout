@@ -76,3 +76,7 @@ The following is a list of items to be completed:
 
 * Implement build and deploy pipeline in CodePipeline/CodeBuild/CodeDeploy
 * Implement monitoring and alerts in CloudWatch
+
+## Real World
+
+In a real-life project, the website (everything in `./checkout-simple-app`) and infrastructure would be in separate repositories.
