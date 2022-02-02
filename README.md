@@ -1,5 +1,7 @@
 # Checkout Simple Website
 
+A live install of this repo can be found here: https://checkout.davidsmith.dev 
+
 This project consists of a _very_ simple website and an infrastructure stack to serve that website with scalability in mind.
 
 AWS Lambda has been selected to host the application code as it:
